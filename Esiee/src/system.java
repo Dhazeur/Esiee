@@ -28,9 +28,18 @@ public class system {
 	}
 
 	public static void loop() {
+		//utiliser pour l'affichage ecran
 		int temps = (int) (System.currentTimeMillis());
 		int deltaTemps=temps;
+		int dt=temps;
+		int nb=0;
 		while (true) {
+			nb++;
+			if((int) (System.currentTimeMillis())-dt>1000){
+				dt=(int) (System.currentTimeMillis());
+				System.out.println(nb);
+				nb=0;
+			}
 			x+=mouvX;
 			y+=mouvY;
 			if(x<0)
@@ -47,13 +56,6 @@ public class system {
 			if(deltaTemps-temps<1000/60){
 				temps=deltaTemps;
 				dessin();//calibrer pour afficher du 60fps
-			}
-			
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 	}
